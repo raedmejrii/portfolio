@@ -121,23 +121,23 @@ function App() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {[
         {
-          title: 'Full-Stack Web App',
-          desc: 'Complete web application with authentication, data management, and responsive UI. Handled everything from database schema to deployment.',
-          stack: ['React', 'Node.js', 'PostgreSQL', 'REST API'],
-          link: 'https://github.com/raedmejrii',
-        },
-        {
-          title: 'DevOps Pipeline',
-          desc: 'Automated CI/CD pipeline from scratch. Containerised services, configured reverse proxy, and set up automated testing and deployment.',
-          stack: ['Docker', 'GitHub Actions', 'Nginx', 'Linux'],
-          link: 'https://github.com/raedmejrii',
-        },
-        {
-          title: 'Frontend UI System',
-          desc: 'Modular component library with reusable UI elements. Focused on performance, accessibility, and design consistency.',
-          stack: ['React', 'CSS Modules', 'Figma'],
-          link: 'https://github.com/raedmejrii',
-        },
+  title: 'Full-Stack Web App',
+  desc: 'Complete web application with authentication, data management, and responsive UI. Handled everything from database schema to deployment.',
+  stack: ['React', 'Node.js', 'PostgreSQL', 'REST API'],
+  link: 'https://github.com/raedmejrii/portfolio',
+},
+{
+  title: 'DevOps Pipeline',
+  desc: 'Automated CI/CD pipeline from scratch. Containerised services, configured reverse proxy, and set up automated testing and deployment.',
+  stack: ['Docker', 'GitHub Actions', 'Nginx', 'Linux'],
+  link: 'https://github.com/raedmejrii/portfolio',
+},
+{
+  title: 'Frontend UI System',
+  desc: 'Modular component library with reusable UI elements. Focused on performance, accessibility, and design consistency.',
+  stack: ['React', 'CSS Modules', 'Figma'],
+  link: 'https://github.com/raedmejrii/portfolio',
+},
       ].map(project => (
         <div key={project.title} style={{
           border: '1px solid #eee',
