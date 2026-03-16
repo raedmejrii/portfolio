@@ -10,8 +10,8 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #ffffff;
-  color: #1a1a1a;
+  background-color: #0f0f0f;
+  color: #f0f0f0;
   line-height: 1.6;
 }
 
@@ -35,57 +35,47 @@ section {
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #888;
+  color: #666;
   margin-bottom: 1rem;
 }
 
 .btn {
   display: inline-block;
   padding: 10px 22px;
-  border: 1px solid #1a1a1a;
+  border: 1px solid #333;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
   background: transparent;
-  color: #1a1a1a;
+  color: #f0f0f0;
 }
 
 .btn:hover {
-  background: #1a1a1a;
-  color: #ffffff;
+  background: #f0f0f0;
+  color: #0f0f0f;
 }
 
 .btn-primary {
-  background: #1a1a1a;
-  color: #ffffff;
+  background: #f0f0f0;
+  color: #0f0f0f;
+  border-color: #f0f0f0;
 }
 
 .btn-primary:hover {
-  background: #333;
+  background: #ccc;
+  border-color: #ccc;
 }
+
 #hero {
   padding-top: 140px !important;
 }
+
 @media (max-width: 768px) {
-  h1 {
-    font-size: 36px !important;
-  }
-
-  h2 {
-    font-size: 22px !important;
-  }
-
-  .container {
-    padding: 0 1.25rem;
-  }
-
-  section {
-    padding: 60px 0;
-  }
-
-  #hero {
-    padding-top: 100px !important;
-  }
+  h1 { font-size: 36px !important; }
+  h2 { font-size: 22px !important; }
+  .container { padding: 0 1.25rem; }
+  section { padding: 60px 0; }
+  #hero { padding-top: 100px !important; }
 }
