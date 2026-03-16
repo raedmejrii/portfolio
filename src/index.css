@@ -65,3 +65,27 @@ section {
 .btn-primary:hover {
   background: #333;
 }
+#hero {
+  padding-top: 140px !important;
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 36px !important;
+  }
+
+  h2 {
+    font-size: 22px !important;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  #hero {
+    padding-top: 100px !important;
+  }
+}
