@@ -1,5 +1,9 @@
 import './index.css'
-
+import {
+  SiReact, SiNodedotjs, SiDocker, SiGithubactions,
+  SiPostgresql, SiNginx, SiLinux, SiFigma,
+  SiHtml5, SiWordpress
+} from 'react-icons/si'
 function App() {
   return (
     <>
@@ -254,42 +258,65 @@ function App() {
         </div>
       </section>
 
-      {/* Skills */}
-      <section id="skills" style={{ background: '#141414' }}>
-        <div className="container">
-          <p className="section-label">Skills</p>
-          <h2 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '2.5rem', color: '#f0f0f0' }}>Technical stack</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
-            {[
-              { title: 'Frontend', icon: '▲', items: ['React / JSX', 'HTML5 · CSS3', 'Responsive design', 'Figma (basics)'] },
-              { title: 'Backend & APIs', icon: '◆', items: ['Node.js · Express', 'REST API design', 'PostgreSQL · SQL', 'Authentication (JWT)'] },
-              { title: 'DevOps & Cloud', icon: '●', items: ['Docker · Compose', 'GitHub Actions', 'Linux · Bash', 'Nginx · VPS'] },
-            ].map(col => (
-              <div key={col.title} style={{
-                background: '#0f0f0f',
-                border: '1px solid #222',
-                borderRadius: '12px',
-                padding: '1.75rem',
-                transition: 'border-color 0.2s',
-              }}
-                onMouseEnter={e => e.currentTarget.style.borderColor = '#444'}
-                onMouseLeave={e => e.currentTarget.style.borderColor = '#222'}
-              >
-                <div style={{ fontSize: '18px', marginBottom: '0.75rem', color: '#555' }}>{col.icon}</div>
-                <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '1.25rem', color: '#f0f0f0' }}>{col.title}</h3>
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  {col.items.map(item => (
-                    <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#888' }}>
-                      <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#555', flexShrink: 0 }}></span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+     {/* Skills */}
+<section id="skills" style={{ background: '#141414' }}>
+  <div className="container">
+    <p className="section-label">Skills</p>
+    <h2 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '2.5rem', color: '#f0f0f0' }}>Technical stack</h2>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+      {[
+        {
+          title: 'Frontend',
+          items: [
+            { name: 'React / JSX', icon: <SiReact color="#61DAFB" size={16} /> },
+            { name: 'HTML5', icon: <SiHtml5 color="#E34F26" size={16} /> },
+            { name: 'CSS3', icon: <span style={{ fontSize: '14px', color: '#1572B6' }}>❋</span> },
+            { name: 'Figma', icon: <SiFigma color="#F24E1E" size={16} /> },
+          ],
+        },
+        {
+          title: 'Backend & APIs',
+          items: [
+            { name: 'Node.js', icon: <SiNodedotjs color="#339933" size={16} /> },
+            { name: 'PostgreSQL', icon: <SiPostgresql color="#4169E1" size={16} /> },
+            { name: 'WordPress', icon: <SiWordpress color="#21759B" size={16} /> },
+            { name: 'REST API design', icon: <span style={{ fontSize: '14px' }}>⚡</span> },
+          ],
+        },
+        {
+          title: 'DevOps & Cloud',
+          items: [
+            { name: 'Docker', icon: <SiDocker color="#2496ED" size={16} /> },
+            { name: 'GitHub Actions', icon: <SiGithubactions color="#2088FF" size={16} /> },
+            { name: 'Linux · Bash', icon: <SiLinux color="#FCC624" size={16} /> },
+            { name: 'Nginx', icon: <SiNginx color="#009639" size={16} /> },
+          ],
+        },
+      ].map(col => (
+        <div key={col.title} style={{
+          background: '#0f0f0f',
+          border: '1px solid #222',
+          borderRadius: '12px',
+          padding: '1.75rem',
+          transition: 'border-color 0.2s',
+        }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = '#444'}
+          onMouseLeave={e => e.currentTarget.style.borderColor = '#222'}
+        >
+          <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '1.25rem', color: '#f0f0f0' }}>{col.title}</h3>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {col.items.map(item => (
+              <li key={item.name} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px', color: '#888' }}>
+                {item.icon}
+                {item.name}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* CTA */}
       <section id="contact">
@@ -317,7 +344,7 @@ function App() {
               </p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', minWidth: '180px' }}>
-              <a href="mailto:ton@email.com" className="btn btn-primary" style={{ textAlign: 'center' }}>
+              <a href="mailto:raedmjr00@gmail.com" className="btn btn-primary" style={{ textAlign: 'center' }}>
                 Send me a message
               </a>
               <div style={{ display: 'flex', gap: '0.75rem' }}>
