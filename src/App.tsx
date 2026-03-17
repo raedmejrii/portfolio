@@ -4,7 +4,30 @@ import {
   SiPostgresql, SiNginx, SiLinux, SiFigma,
   SiHtml5, SiWordpress
 } from 'react-icons/si'
+import { useEffect, useState } from 'react'
 function App() {
+  const words = ['front to back.', 'React to Docker.', 'idea to production.']
+const [currentWord, setCurrentWord] = useState(0)
+const [displayed, setDisplayed] = useState('')
+const [deleting, setDeleting] = useState(false)
+
+useEffect(() => {
+  const word = words[currentWord]
+  let timeout: ReturnType<typeof setTimeout>
+
+  if (!deleting && displayed.length < word.length) {
+    timeout = setTimeout(() => setDisplayed(word.slice(0, displayed.length + 1)), 80)
+  } else if (!deleting && displayed.length === word.length) {
+    timeout = setTimeout(() => setDeleting(true), 2000)
+  } else if (deleting && displayed.length > 0) {
+    timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40)
+  } else if (deleting && displayed.length === 0) {
+    setDeleting(false)
+    setCurrentWord((currentWord + 1) % words.length)
+  }
+
+  return () => clearTimeout(timeout)
+}, [displayed, deleting, currentWord])
   return (
     <>
       {/* Navbar */}
@@ -59,7 +82,10 @@ function App() {
             color: '#f0f0f0',
           }}>
             I build —<br />
-            <span style={{ color: '#444' }}>front to back.</span>
+            <span style={{ color: '#444' }}>
+  {displayed}
+  <span style={{ borderRight: '2px solid #555', marginLeft: '2px', animation: 'blink 1s infinite' }}></span>
+</span>
           </h1>
           <p style={{
             fontSize: '18px',
