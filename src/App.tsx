@@ -6,6 +6,7 @@ import {
   SiHtml5, SiWordpress
 } from 'react-icons/si'
 import emailjs from '@emailjs/browser'
+emailjs.init('BO2JNRaPsxfN8DbpX')
 
 function App() {
   const [darkMode, setDarkMode] = useState(true)
@@ -54,14 +55,27 @@ const handleSubmit = async () => {
   if (!formData.name || !formData.email || !formData.message) return
   setSending(true)
   try {
-    await emailjs.send(
-      'service_ehpob77',
-      'mcmrswg',
-      { name: formData.name, email: formData.email, message: formData.message, title: 'Portfolio Contact' },
-      'BO2JNRaPsxfN8DbpX'
-    )
-    setSent(true)
-    setFormData({ name: '', email: '', message: '' })
+    const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        service_id: 'service_ehpob77',
+        template_id: 'template_7o8zzuj',
+        user_id: 'BO2JNRaPsxfN8DbpX',
+        template_params: {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+      }),
+    })
+    if (response.ok) {
+      setSent(true)
+      setFormData({ name: '', email: '', message: '' })
+    } else {
+      const err = await response.text()
+      console.error(err)
+    }
   } catch (e) {
     console.error(e)
   }
