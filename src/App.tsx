@@ -1,5 +1,5 @@
 import './index.css'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import {
   SiReact, SiNodedotjs, SiDocker, SiGithubactions,
   SiPostgresql, SiNginx, SiLinux, SiFigma,
@@ -12,6 +12,39 @@ function App() {
   const [currentWord, setCurrentWord] = useState(0)
   const [displayed, setDisplayed] = useState('')
   const [deleting, setDeleting] = useState(false)
+  const useCounter = (target: number, duration: number = 1500) => {
+  const [count, setCount] = useState(0)
+  const started = useRef(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true
+        const steps = 40
+        const increment = target / steps
+        const interval = duration / steps
+        let current = 0
+        const timer = setInterval(() => {
+          current += increment
+          if (current >= target) {
+            setCount(target)
+            clearInterval(timer)
+          } else {
+            setCount(Math.floor(current))
+          }
+        }, interval)
+      }
+    }, { threshold: 0.5 })
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
+  }, [target, duration])
+
+  return { count, ref }
+}
+
+const counter1 = useCounter(2)
+const counter2 = useCounter(3)
 
   useEffect(() => {
     const word = words[currentWord]
@@ -99,18 +132,20 @@ function App() {
             <a href="#contact" className="btn">Get in touch →</a>
             <a href="/RaedMejri_CV.pdf" download className="btn">↓ Download CV</a>
           </div>
-          <div style={{ display: 'flex', gap: '2.5rem', marginTop: '4rem', paddingTop: '2rem', borderTop: `1px solid ${border}` }}>
-            {[
-              { num: '2+', label: 'Years of experience' },
-              { num: 'React · Node · Docker', label: 'Core stack' },
-              { num: 'FR · DE · EN', label: 'Languages' },
-            ].map(stat => (
-              <div key={stat.label}>
-                <p style={{ fontSize: '15px', fontWeight: 600, marginBottom: '3px', color: text }}>{stat.num}</p>
-                <p style={{ fontSize: '12px', color: darkMode ? '#666' : '#888' }}>{stat.label}</p>
-              </div>
-            ))}
-          </div>
+         <div style={{ display: 'flex', gap: '2.5rem', marginTop: '4rem', paddingTop: '2rem', borderTop: `1px solid ${border}` }}>
+  <div ref={counter1.ref}>
+    <p style={{ fontSize: '15px', fontWeight: 600, marginBottom: '3px', color: text }}>{counter1.count}+</p>
+    <p style={{ fontSize: '12px', color: darkMode ? '#666' : '#888' }}>Years of experience</p>
+  </div>
+  <div ref={counter2.ref}>
+    <p style={{ fontSize: '15px', fontWeight: 600, marginBottom: '3px', color: text }}>{counter2.count}</p>
+    <p style={{ fontSize: '12px', color: darkMode ? '#666' : '#888' }}>Projects completed</p>
+  </div>
+  <div>
+    <p style={{ fontSize: '15px', fontWeight: 600, marginBottom: '3px', color: text }}>FR · DE · EN</p>
+    <p style={{ fontSize: '12px', color: darkMode ? '#666' : '#888' }}>Languages</p>
+  </div>
+</div> 
         </div>
       </section>
 
