@@ -99,6 +99,7 @@ useEffect(() => {
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <a href="#experience" className="btn btn-primary">View projects</a>
             <a href="#contact" className="btn">Get in touch →</a>
+  <a href="/RaedMejri_CV.pdf" download className="btn">↓ Download CV</a>
           </div>
           <div style={{
             display: 'flex',
