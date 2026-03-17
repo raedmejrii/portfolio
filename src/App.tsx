@@ -122,30 +122,48 @@ useEffect(() => {
       </section>
 
       {/* About */}
-      <section id="about" style={{ background: '#141414' }}>
-        <div className="container">
-          <p className="section-label">About</p>
-          <h2 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '1.5rem', color: '#f0f0f0' }}>The engineer behind the stack</h2>
-          <p style={{ fontSize: '16px', color: '#888', maxWidth: '600px', lineHeight: 1.8, marginBottom: '1rem' }}>
-            From Tunisia to Germany — three cities, three universities, one consistent thread: building software that works end to end. I design interfaces, architect APIs, and deploy infrastructure.
-          </p>
-          <p style={{ fontSize: '16px', color: '#888', maxWidth: '600px', lineHeight: 1.8 }}>
-            I don't wait for the ops team or the design team — when I take on a task, I own it from the first commit to the live environment.
-          </p>
-          <div style={{ display: 'flex', gap: '3rem', marginTop: '2.5rem' }}>
-            {[
-              { label: 'Degree', value: 'B.Sc. IT Networks & Software' },
-              { label: 'Currently', value: 'M.Sc. Computer Science' },
-              { label: 'Languages', value: 'FR · DE · EN' },
-            ].map(item => (
-              <div key={item.label}>
-                <p style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#555', marginBottom: '4px' }}>{item.label}</p>
-                <p style={{ fontSize: '14px', fontWeight: 500, color: '#f0f0f0' }}>{item.value}</p>
-              </div>
-            ))}
-          </div>
+      {/* About */}
+<section id="about" style={{ background: '#141414' }}>
+  <div className="container">
+    <div style={{ display: 'flex', gap: '3rem', alignItems: 'center', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
+      <img
+        src="/raed.jpeg"
+        alt="Raed Mejri"
+        style={{
+          width: '140px',
+          height: '140px',
+          borderRadius: '50%',
+          objectFit: 'cover',
+          border: '2px solid #333',
+          flexShrink: 0,
+        }}
+      />
+      <div>
+        <p className="section-label">About</p>
+        <h2 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '0.5rem', color: '#f0f0f0' }}>The engineer behind the stack</h2>
+        <p style={{ fontSize: '14px', color: '#666' }}>Nürnberg, Germany · Available for Werkstudent</p>
+      </div>
+    </div>
+    <p style={{ fontSize: '16px', color: '#888', maxWidth: '600px', lineHeight: 1.8, marginBottom: '1rem' }}>
+      From Tunisia to Germany — three cities, three universities, one consistent thread: building software that works end to end. I design interfaces, architect APIs, and deploy infrastructure.
+    </p>
+    <p style={{ fontSize: '16px', color: '#888', maxWidth: '600px', lineHeight: 1.8 }}>
+      I don't wait for the ops team or the design team — when I take on a task, I own it from the first commit to the live environment.
+    </p>
+    <div style={{ display: 'flex', gap: '3rem', marginTop: '2.5rem' }}>
+      {[
+        { label: 'Degree', value: 'B.Sc. IT Networks & Software' },
+        { label: 'Currently', value: 'M.Sc. Computer Science' },
+        { label: 'Languages', value: 'FR · DE · EN' },
+      ].map(item => (
+        <div key={item.label}>
+          <p style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#555', marginBottom: '4px' }}>{item.label}</p>
+          <p style={{ fontSize: '14px', fontWeight: 500, color: '#f0f0f0' }}>{item.value}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Experience */}
       <section id="experience">
