@@ -288,23 +288,26 @@ const handleSubmit = async () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             {[
               {
-                title: 'Personal Portfolio',
-                desc: 'Designed and built this portfolio from scratch using React and Vite. Deployed on Vercel with continuous deployment via GitHub.',
-                stack: ['React', 'Vite', 'CSS', 'Vercel'],
-                link: 'https://github.com/raedmejrii/portfolio',
-              },
-              {
-                title: 'ABSHORE Website Redesign',
-                desc: 'Full redesign of a company website during internship. Focused on modern design, performance optimization and brand consistency.',
-                stack: ['WordPress', 'CSS', 'Web Design', 'UX'],
-                link: 'https://github.com/raedmejrii',
-              },
-              {
-                title: 'Network Infrastructure Lab',
-                desc: 'Hands-on experience configuring network equipment and troubleshooting connectivity issues at Tunisie Telecom.',
-                stack: ['Networking', 'Linux', 'Infrastructure'],
-                link: 'https://github.com/raedmejrii',
-              },
+  title: 'Personal Portfolio',
+  desc: 'Designed and built this portfolio from scratch using React and Vite. Dark/light mode, animations, contact form with EmailJS. Deployed on Vercel with CI/CD via GitHub.',
+  stack: ['React', 'Vite', 'TypeScript', 'EmailJS', 'Vercel'],
+  link: 'https://github.com/raedmejrii/portfolio',
+  live: 'https://portfolio-ruby-kappa-22.vercel.app',
+},
+{
+  title: 'ABSHORE Website Redesign',
+  desc: 'Full redesign of a company website during Bachelor final year internship. Focused on modern design, performance optimization and brand consistency.',
+  stack: ['WordPress', 'CSS', 'Web Design', 'UX'],
+  link: 'https://github.com/raedmejrii',
+  live: '',
+},
+{
+  title: 'Personal Website — Gamma',
+  desc: 'Designed a professional personal webpage using Gamma AI. Structured with 5 sections: Hero, About, Experience, Skills and CTA. Published and live.',
+  stack: ['Gamma', 'Web Design', 'Content Strategy'],
+  link: '',
+  live: 'https://raed-mejri-eab32ka.gamma.site',
+},
             ].map(project => (
               <div key={project.title} style={{
                 border: `1px solid ${border}`, borderRadius: '12px',
@@ -321,13 +324,26 @@ const handleSubmit = async () => {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
                   <h3 style={{ fontSize: '17px', fontWeight: 600, color: text }}>{project.title}</h3>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" style={{
-                    fontSize: '13px', color: muted, border: `1px solid ${border}`,
-                    borderRadius: '6px', padding: '4px 12px', transition: 'all 0.2s',
-                  }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = text; e.currentTarget.style.color = text }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = border; e.currentTarget.style.color = muted }}
-                  >GitHub →</a>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+  {project.link && (
+    <a href={project.link} target="_blank" rel="noopener noreferrer" style={{
+      fontSize: '13px', color: muted, border: `1px solid ${border}`,
+      borderRadius: '6px', padding: '4px 12px', transition: 'all 0.2s',
+    }}
+      onMouseEnter={e => { e.currentTarget.style.borderColor = text; e.currentTarget.style.color = text }}
+      onMouseLeave={e => { e.currentTarget.style.borderColor = border; e.currentTarget.style.color = muted }}
+    >GitHub →</a>
+  )}
+  {project.live && (
+    <a href={project.live} target="_blank" rel="noopener noreferrer" style={{
+      fontSize: '13px', color: muted, border: `1px solid ${border}`,
+      borderRadius: '6px', padding: '4px 12px', transition: 'all 0.2s',
+    }}
+      onMouseEnter={e => { e.currentTarget.style.borderColor = text; e.currentTarget.style.color = text }}
+      onMouseLeave={e => { e.currentTarget.style.borderColor = border; e.currentTarget.style.color = muted }}
+    >Live →</a>
+  )}
+</div>
                 </div>
                 <p style={{ fontSize: '14px', color: muted, marginBottom: '1.25rem', lineHeight: 1.7 }}>{project.desc}</p>
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
