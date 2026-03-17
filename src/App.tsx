@@ -5,6 +5,7 @@ import {
   SiPostgresql, SiNginx, SiLinux, SiFigma,
   SiHtml5, SiWordpress
 } from 'react-icons/si'
+import emailjs from '@emailjs/browser'
 
 function App() {
   const [darkMode, setDarkMode] = useState(true)
@@ -45,6 +46,27 @@ function App() {
 
 const counter1 = useCounter(2)
 const counter2 = useCounter(3)
+const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+const [sending, setSending] = useState(false)
+const [sent, setSent] = useState(false)
+
+const handleSubmit = async () => {
+  if (!formData.name || !formData.email || !formData.message) return
+  setSending(true)
+  try {
+    await emailjs.send(
+      'service_ehpob77',
+      'mcmrswg',
+      { name: formData.name, email: formData.email, message: formData.message, title: 'Portfolio Contact' },
+      'BO2JNRaPsxfN8DbpX'
+    )
+    setSent(true)
+    setFormData({ name: '', email: '', message: '' })
+  } catch (e) {
+    console.error(e)
+  }
+  setSending(false)
+}
 
   useEffect(() => {
     const word = words[currentWord]
@@ -363,38 +385,89 @@ const counter2 = useCounter(3)
       </section>
 
       {/* CTA */}
-      <section id="contact" style={{ background: bg }}>
-        <div className="container">
-          <div style={{
-            background: bg2, border: `1px solid ${border}`,
-            borderRadius: '16px', padding: '3.5rem',
-            display: 'flex', justifyContent: 'space-between',
-            alignItems: 'center', gap: '2rem', flexWrap: 'wrap',
-          }}>
-            <div>
-              <p style={{ fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: darkMode ? '#555' : '#999', marginBottom: '0.75rem' }}>
-                Available now
-              </p>
-              <h2 style={{ fontSize: '28px', fontWeight: 600, color: text, marginBottom: '0.75rem', lineHeight: 1.3 }}>
-                Open to Werkstudent roles
-              </h2>
-              <p style={{ fontSize: '15px', color: muted, maxWidth: '420px', lineHeight: 1.7 }}>
-                15–20h/week · Nürnberg or remote · Starting now
-              </p>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', minWidth: '180px' }}>
-              <a href="mailto:raedmejri@email.com" className="btn btn-primary" style={{ textAlign: 'center' }}>
-                Send me a message
-              </a>
-              <div style={{ display: 'flex', gap: '0.75rem' }}>
-                <a href="https://linkedin.com/in/raedmejrii" target="_blank" rel="noopener noreferrer" className="btn" style={{ flex: 1, textAlign: 'center' }}>LinkedIn</a>
-                <a href="https://github.com/raedmejrii" target="_blank" rel="noopener noreferrer" className="btn" style={{ flex: 1, textAlign: 'center' }}>GitHub</a>
-              </div>
-            </div>
-          </div>
+      {/* CTA */}
+<section id="contact" style={{ background: bg }}>
+  <div className="container">
+    <div style={{
+      background: bg2, border: `1px solid ${border}`,
+      borderRadius: '16px', padding: '3.5rem',
+      display: 'grid', gridTemplateColumns: '1fr 1fr',
+      gap: '3rem', flexWrap: 'wrap',
+    }}>
+      <div>
+        <p style={{ fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: darkMode ? '#555' : '#999', marginBottom: '0.75rem' }}>
+          Available now
+        </p>
+        <h2 style={{ fontSize: '28px', fontWeight: 600, color: text, marginBottom: '0.75rem', lineHeight: 1.3 }}>
+          Open to Werkstudent roles
+        </h2>
+        <p style={{ fontSize: '15px', color: muted, lineHeight: 1.7, marginBottom: '1.5rem' }}>
+          15–20h/week · Nürnberg or remote · Starting now
+        </p>
+        <div style={{ display: 'flex', gap: '0.75rem' }}>
+          <a href="https://linkedin.com/in/raedmejrii" target="_blank" rel="noopener noreferrer" className="btn" style={{ textAlign: 'center' }}>LinkedIn</a>
+          <a href="https://github.com/raedmejrii" target="_blank" rel="noopener noreferrer" className="btn" style={{ textAlign: 'center' }}>GitHub</a>
+          <a href="/RaedMejri_CV.pdf" download className="btn" style={{ textAlign: 'center' }}>↓ CV</a>
         </div>
-      </section>
-
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+        {sent ? (
+          <div style={{ textAlign: 'center', padding: '2rem', color: '#4ade80', fontSize: '16px', fontWeight: 500 }}>
+            ✓ Message sent ! I'll get back to you soon.
+          </div>
+        ) : (
+          <>
+            <input
+              type="text"
+              placeholder="Your name"
+              value={formData.name}
+              onChange={e => setFormData({ ...formData, name: e.target.value })}
+              style={{
+                background: bg, border: `1px solid ${border}`,
+                borderRadius: '8px', padding: '12px 16px',
+                fontSize: '14px', color: text, outline: 'none',
+                transition: 'border-color 0.2s',
+              }}
+            />
+            <input
+              type="email"
+              placeholder="Your email"
+              value={formData.email}
+              onChange={e => setFormData({ ...formData, email: e.target.value })}
+              style={{
+                background: bg, border: `1px solid ${border}`,
+                borderRadius: '8px', padding: '12px 16px',
+                fontSize: '14px', color: text, outline: 'none',
+                transition: 'border-color 0.2s',
+              }}
+            />
+            <textarea
+              placeholder="Your message"
+              value={formData.message}
+              onChange={e => setFormData({ ...formData, message: e.target.value })}
+              rows={4}
+              style={{
+                background: bg, border: `1px solid ${border}`,
+                borderRadius: '8px', padding: '12px 16px',
+                fontSize: '14px', color: text, outline: 'none',
+                resize: 'none', fontFamily: 'inherit',
+                transition: 'border-color 0.2s',
+              }}
+            />
+            <button
+              onClick={handleSubmit}
+              disabled={sending}
+              className="btn btn-primary"
+              style={{ textAlign: 'center', opacity: sending ? 0.7 : 1 }}
+            >
+              {sending ? 'Sending...' : 'Send message'}
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
       {/* Footer */}
       <footer style={{ borderTop: `1px solid ${border}`, padding: '2rem 0', textAlign: 'center', fontSize: '13px', color: darkMode ? '#444' : '#999' }}>
         © 2026 Raed Mejri · Built with React + Vite · Deployed on Vercel
