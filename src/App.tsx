@@ -356,6 +356,79 @@ const handleSubmit = async () => {
           </div>
         </div>
       </section>
+      {/* Education */}
+<section id="education" style={{ background: bg2 }}>
+  <div className="container">
+    <p className="section-label">Education</p>
+    <h2 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '2.5rem', color: text }}>Academic journey</h2>
+    <div style={{ position: 'relative', paddingLeft: '2rem' }}>
+      <div style={{
+        position: 'absolute', left: '7px', top: '8px', bottom: '8px',
+        width: '1px', background: border,
+      }} />
+      {[
+        {
+          year: '2024 – 2025',
+          school: 'Philipps-Universität Marburg',
+          degree: 'Exchange Student — Freemover',
+          location: 'Marburg, Germany',
+          desc: 'Two semesters exchange program in Computer Science. English-language courses.',
+          current: true,
+        },
+        {
+          year: '2021 – 2024',
+          school: 'TEK-UP University',
+          degree: 'Computer Engineering Cycle (M.Sc. level)',
+          location: 'Ariana, Tunisia',
+          desc: 'Engineering cycle in Computer Science. All semesters completed — PFE pending.',
+          current: false,
+        },
+        {
+          year: '2018 – 2021',
+          school: 'ISSATM — Université de Carthage',
+          degree: 'Licence Appliquée — IT Networks & Software',
+          location: 'Mateur, Tunisia',
+          desc: 'Bachelor\'s degree in Applied Computer Science. Graduated with mention Good.',
+          current: false,
+        },
+      ].map((edu, i) => (
+        <div key={i} style={{ position: 'relative', marginBottom: '2rem', paddingLeft: '1.5rem' }}>
+          <div style={{
+            position: 'absolute', left: '-1.72rem', top: '6px',
+            width: '12px', height: '12px', borderRadius: '50%',
+            background: edu.current ? '#f0f0f0' : border,
+            border: `2px solid ${edu.current ? '#f0f0f0' : border}`,
+            zIndex: 1,
+          }} />
+          <div style={{
+            background: cardBg, border: `1px solid ${edu.current ? (darkMode ? '#444' : '#bbb') : border}`,
+            borderRadius: '12px', padding: '1.5rem',
+            transition: 'border-color 0.2s',
+          }}
+            onMouseEnter={e => e.currentTarget.style.borderColor = darkMode ? '#444' : '#bbb'}
+            onMouseLeave={e => e.currentTarget.style.borderColor = edu.current ? (darkMode ? '#444' : '#bbb') : border}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}>
+              <h3 style={{ fontSize: '16px', fontWeight: 600, color: text }}>{edu.school}</h3>
+              <span style={{ fontSize: '12px', padding: '3px 10px', border: `1px solid ${border}`, borderRadius: '20px', color: muted }}>{edu.year}</span>
+            </div>
+            <p style={{ fontSize: '14px', color: muted, fontStyle: 'italic', marginBottom: '0.4rem' }}>{edu.degree}</p>
+            <p style={{ fontSize: '12px', color: darkMode ? '#555' : '#999', marginBottom: '0.75rem' }}>{edu.location}</p>
+            <p style={{ fontSize: '14px', color: muted, lineHeight: 1.6 }}>{edu.desc}</p>
+            {edu.current && (
+              <span style={{
+                display: 'inline-block', marginTop: '0.75rem',
+                fontSize: '11px', padding: '3px 10px',
+                background: darkMode ? '#1a1a1a' : '#e8e8e8',
+                borderRadius: '20px', color: muted,
+              }}>Current</span>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Skills */}
       <section id="skills" style={{ background: bg2 }}>
