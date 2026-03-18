@@ -316,11 +316,11 @@ const handleSubmit = async () => {
   live: '',
 },
 {
-  title: 'Personal Website — Gamma',
-  desc: 'Designed a professional personal webpage using Gamma AI. Structured with 5 sections: Hero, About, Experience, Skills and CTA. Published and live.',
-  stack: ['Gamma', 'Web Design', 'Content Strategy'],
-  link: '',
-  live: 'https://raed-mejri-eab32ka.gamma.site',
+  title: 'Todo App',
+  desc: 'A clean todo app with add, complete, and delete features. Tasks saved with localStorage — they persist after closing the browser.',
+  stack: ['React', 'TypeScript', 'Vite', 'localStorage'],
+  link: 'https://github.com/raedmejrii/todoapp',
+  live: 'https://todoapp-ten-vert.vercel.app',
 },
             ].map(project => (
               <div key={project.title} style={{
