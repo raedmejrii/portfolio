@@ -370,6 +370,54 @@ const handleSubmit = async () => {
           </div>
         </div>
       </section>
+      {/* Currently Learning */}
+<section style={{ background: bg }}>
+  <div className="container">
+    <p className="section-label">Currently learning</p>
+    <h2 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '2.5rem', color: text }}>Always growing</h2>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+      {[
+        {
+          title: 'German Language',
+          level: 'A2 — In progress',
+          desc: 'Active course at Bildungszentrum Nürnberg. Building fluency for professional integration in Germany.',
+          icon: '🇩🇪',
+        },
+        {
+          title: 'M.Sc. Computer Science',
+          level: 'Applications in progress',
+          desc: 'Preparing Master\'s applications for Universität Passau and TH Nürnberg. Target: AI Engineering & CS.',
+          icon: '🎓',
+        },
+        {
+          title: 'TypeScript',
+          level: 'Intermediate — Active',
+          desc: 'Using TypeScript daily in this portfolio project. Deepening knowledge of advanced types and patterns.',
+          icon: '⚡',
+        },
+      ].map(item => (
+        <div key={item.title} style={{
+          background: bg2, border: `1px solid ${border}`,
+          borderRadius: '12px', padding: '1.75rem',
+          transition: 'border-color 0.2s',
+        }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = darkMode ? '#444' : '#bbb'}
+          onMouseLeave={e => e.currentTarget.style.borderColor = border}
+        >
+          <div style={{ fontSize: '24px', marginBottom: '0.75rem' }}>{item.icon}</div>
+          <h3 style={{ fontSize: '15px', fontWeight: 600, color: text, marginBottom: '0.4rem' }}>{item.title}</h3>
+          <span style={{
+            fontSize: '11px', padding: '2px 8px',
+            background: darkMode ? '#1a1a1a' : '#e8e8e8',
+            borderRadius: '20px', color: muted,
+            display: 'inline-block', marginBottom: '0.75rem',
+          }}>{item.level}</span>
+          <p style={{ fontSize: '13px', color: muted, lineHeight: 1.6 }}>{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
       {/* Education */}
 <section id="education" style={{ background: bg2 }}>
   <div className="container">
