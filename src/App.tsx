@@ -120,20 +120,27 @@ const handleSubmit = async () => {
           <span style={{ fontWeight: 600, fontSize: '15px', color: text }}>Raed Mejri</span>
           <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
             <div style={{ display: 'flex', gap: '2rem', fontSize: '14px', color: muted }}>
-              {['About', 'Experience', 'Skills', 'Contact'].map(item => (
+              {['About', 'Experience', 'Education', 'Skills', 'Contact'].map(item => (
                 <a key={item} href={`#${item.toLowerCase()}`}
                   onMouseEnter={e => e.currentTarget.style.color = text}
                   onMouseLeave={e => e.currentTarget.style.color = muted}
                   style={{ transition: 'color 0.2s' }}>{item}</a>
               ))}
             </div>
-            <button onClick={() => setDarkMode(!darkMode)} style={{
-              background: 'none', border: `1px solid ${border}`,
-              borderRadius: '20px', padding: '4px 12px',
-              cursor: 'pointer', fontSize: '13px', color: muted, transition: 'all 0.2s',
-            }}>
-              {darkMode ? '☀ Light' : '🌙 Dark'}
-            </button>
+            <a href="https://linkedin.com/in/raedmejrii" target="_blank" rel="noopener noreferrer" style={{
+  fontSize: '13px', color: muted, border: `1px solid ${border}`,
+  borderRadius: '20px', padding: '4px 12px', transition: 'all 0.2s',
+}}
+  onMouseEnter={e => e.currentTarget.style.color = text}
+  onMouseLeave={e => e.currentTarget.style.color = muted}
+>in</a>
+<button onClick={() => setDarkMode(!darkMode)} style={{
+  background: 'none', border: `1px solid ${border}`,
+  borderRadius: '20px', padding: '4px 12px',
+  cursor: 'pointer', fontSize: '13px', color: muted, transition: 'all 0.2s',
+}}>
+  {darkMode ? '☀ Light' : '🌙 Dark'}
+</button>
           </div>
         </div>
       </nav>
@@ -571,10 +578,53 @@ const handleSubmit = async () => {
     </div>
   </div>
 </section>
-      {/* Footer */}
-      <footer style={{ borderTop: `1px solid ${border}`, padding: '2rem 0', textAlign: 'center', fontSize: '13px', color: darkMode ? '#444' : '#999' }}>
+     {/* Footer */}
+<footer style={{ borderTop: `1px solid ${border}`, padding: '3rem 0' }}>
+  <div className="container">
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2rem' }}>
+      <div>
+        <p style={{ fontSize: '16px', fontWeight: 600, color: text, marginBottom: '0.4rem' }}>Raed Mejri</p>
+        <p style={{ fontSize: '13px', color: muted }}>Full-stack developer · Nürnberg, Germany</p>
+      </div>
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <a href="#about" style={{ fontSize: '13px', color: muted, transition: 'color 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.color = text}
+          onMouseLeave={e => e.currentTarget.style.color = muted}>About</a>
+        <a href="#experience" style={{ fontSize: '13px', color: muted, transition: 'color 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.color = text}
+          onMouseLeave={e => e.currentTarget.style.color = muted}>Experience</a>
+        <a href="#education" style={{ fontSize: '13px', color: muted, transition: 'color 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.color = text}
+          onMouseLeave={e => e.currentTarget.style.color = muted}>Education</a>
+        <a href="#skills" style={{ fontSize: '13px', color: muted, transition: 'color 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.color = text}
+          onMouseLeave={e => e.currentTarget.style.color = muted}>Skills</a>
+        <a href="#contact" style={{ fontSize: '13px', color: muted, transition: 'color 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.color = text}
+          onMouseLeave={e => e.currentTarget.style.color = muted}>Contact</a>
+      </div>
+    </div>
+    <div style={{ borderTop: `1px solid ${border}`, paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+      <p style={{ fontSize: '12px', color: darkMode ? '#444' : '#999' }}>
         © 2026 Raed Mejri · Built with React + Vite · Deployed on Vercel
-      </footer>
+      </p>
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <a href="https://github.com/raedmejrii/portfolio" target="_blank" rel="noopener noreferrer"
+          style={{ fontSize: '12px', color: darkMode ? '#444' : '#999', transition: 'color 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.color = text}
+          onMouseLeave={e => e.currentTarget.style.color = darkMode ? '#444' : '#999'}>
+          View source code
+        </a>
+        <a href="/RaedMejri_CV.pdf" download
+          style={{ fontSize: '12px', color: darkMode ? '#444' : '#999', transition: 'color 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.color = text}
+          onMouseLeave={e => e.currentTarget.style.color = darkMode ? '#444' : '#999'}>
+          Download CV
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
 
     </div>
   )
