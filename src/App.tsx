@@ -10,6 +10,13 @@ emailjs.init('BO2JNRaPsxfN8DbpX')
 
 function App() {
   const [darkMode, setDarkMode] = useState(true)
+  const [showTop, setShowTop] = useState(false)
+
+useEffect(() => {
+  const handleScroll = () => setShowTop(window.scrollY > 400)
+  window.addEventListener('scroll', handleScroll)
+  return () => window.removeEventListener('scroll', handleScroll)
+}, [])
   const words = ['front to back.', 'React to Docker.', 'idea to production.']
   const [currentWord, setCurrentWord] = useState(0)
   const [displayed, setDisplayed] = useState('')
@@ -578,6 +585,34 @@ const handleSubmit = async () => {
     </div>
   </div>
 </section>
+{/* Scroll to top */}
+{showTop && (
+  <button
+    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+    style={{
+      position: 'fixed',
+      bottom: '2rem',
+      right: '2rem',
+      width: '44px',
+      height: '44px',
+      borderRadius: '50%',
+      background: darkMode ? '#f0f0f0' : '#1a1a1a',
+      color: darkMode ? '#0f0f0f' : '#f0f0f0',
+      border: 'none',
+      fontSize: '18px',
+      cursor: 'pointer',
+      zIndex: 99,
+      transition: 'all 0.2s',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+    onMouseEnter={e => e.currentTarget.style.opacity = '0.8'}
+    onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+  >
+    ↑
+  </button>
+)}
      {/* Footer */}
 <footer style={{ borderTop: `1px solid ${border}`, padding: '3rem 0' }}>
   <div className="container">
