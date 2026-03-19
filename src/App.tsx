@@ -322,6 +322,15 @@ const handleSubmit = async () => {
   link: 'https://github.com/raedmejrii/todoapp',
   live: 'https://todoapp-ten-vert.vercel.app',
 },
+{
+  title: 'Weather App',
+  desc: 'Real-time weather app using OpenWeatherMap API. Search any city and get live temperature, humidity and weather conditions.',
+  stack: ['React', 'TypeScript', 'REST API', 'Vite'],
+  link: 'https://github.com/raedmejrii/weather-app',
+  live: 'https://weather-app-one-sigma-yw19701am4.vercel.app',
+},
+
+
             ].map(project => (
               <div key={project.title} style={{
                 border: `1px solid ${border}`, borderRadius: '12px',
